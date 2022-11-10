@@ -3,23 +3,24 @@ using UnityEngine;
 public class PlayerTwo : MonoBehaviour
 {
     [SerializeField] float speed;
+    [SerializeField] float turnSpeed;
 
     void Update()
     {
-        bool isRightPressed = Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D);
-        bool isLeftPressed = Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A);
-        bool isUpPressed = Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W);
-        bool isDownPressed = Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S);
+        bool isRightPressed = Input.GetKey(KeyCode.D);
+        bool isLeftPressed = Input.GetKey(KeyCode.A);
+        bool isUpPressed = Input.GetKey(KeyCode.W);
+        bool isDownPressed = Input.GetKey(KeyCode.S);
         bool isSpacePressed = Input.GetKey(KeyCode.Space);
 
         float x = 0;
         if (isRightPressed)
         {
-            x += 1;
+            x = turnSpeed;
         }
         if (isLeftPressed)
         {
-            x -= 1;
+            x =-turnSpeed;
         }
 
         float z = isUpPressed ? 1 : (isDownPressed ? -1 : 0);
@@ -34,7 +35,10 @@ public class PlayerTwo : MonoBehaviour
 
         }
 
-        Vector3 direction = new Vector3(x, 0, z);
+       //transform.Rotate(Vector3.right, (turnSpeed*Time.deltaTime));
+
+
+      /*  Vector3 direction = new Vector3(x, 0, z);
         direction.Normalize(); // keresztbe mozgás sebességét normalizáltuk
 
 
@@ -59,7 +63,8 @@ public class PlayerTwo : MonoBehaviour
         Vector3 jump = new Vector3(0, y, 0);
         Vector3 jumpSpeed = jump * speed;
 
-        transform.position += jumpSpeed * Time.deltaTime;
+        transform.position += jumpSpeed * Time.deltaTime; 
+      */
 
     }
 }

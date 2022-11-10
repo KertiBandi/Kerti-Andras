@@ -5,11 +5,11 @@ public class BizzBuzz : MonoBehaviour
     [SerializeField] int number;
 
 
-    void start()
+    void Start()
     {
 
 
-        for (int i = 1; i < number; i++)
+        for (int i = 1; i <= number; i++)
         {
             if (i % 15 == 0)
             

@@ -3,13 +3,14 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] float speed;
+    [SerializeField] float angularSpeed;
 
     void Update()
     {
-        bool isRightPressed = Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D);
-        bool isLeftPressed = Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A);
-        bool isUpPressed = Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W);
-        bool isDownPressed = Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S);
+        bool isRightPressed = Input.GetKey(KeyCode.RightArrow) ;
+        bool isLeftPressed = Input.GetKey(KeyCode.LeftArrow);
+        bool isUpPressed = Input.GetKey(KeyCode.UpArrow);
+        bool isDownPressed = Input.GetKey(KeyCode.DownArrow);
 
         float x = 0;
         if(isRightPressed)
@@ -42,9 +43,16 @@ public class PlayerMovement : MonoBehaviour
         // egyenletes változás elérésére használjuk a time,deltatime-ot
 
 
-        if(direction != Vector3.zero)
+        if (direction != Vector3.zero)
+        {
+            Quaternion targetRotation = Quaternion.LookRotation(direction);
+            Quaternion currentRotation = transform.rotation;
 
-        transform.rotation = Quaternion.LookRotation(direction);
+            float maxStepInAngle = angularSpeed * Time.deltaTime;
+
+            transform.rotation = Quaternion.RotateTowards(currentRotation, targetRotation, maxStepInAngle);
+
+        }
 
     }
 }
