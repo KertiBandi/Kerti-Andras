@@ -41,7 +41,12 @@ public class vector : MonoBehaviour
 
         */
 
+        Vector3 Directionvec(Vector3 start,Vector3 end)
+        {
+            return (end - start).normalized;
+            
 
+        }
 
 
     }

@@ -14,7 +14,7 @@ public class power : MonoBehaviour
         for (int i = 0; i < exponent; i++)
         {
             result *= baseNumber;
-            
+            // return result kell, ha egy metódust írunk
         }
         
     }
