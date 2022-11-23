@@ -54,7 +54,7 @@ public class Player2D : MonoBehaviour
         isGrounded = false;
     }
 
-    private void FixedUpdate() // a fizika ebben hajtódik végre,nem állandóanhanem fix idõközönként
+    private void FixedUpdate() // a fizika ebben hajtódik végre,nem állandóan, hanem fix idõközönként
     {
         
     }

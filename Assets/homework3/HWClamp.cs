@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class HWClamp : MonoBehaviour
 {
-    float Clamp(float number, float min, float max) // két rétké közé szorítja a megadott számot
+    float Clamp(float number, float min, float max) // két értké közé szorítja a megadott számot
     {
         if (number > max)
         {
