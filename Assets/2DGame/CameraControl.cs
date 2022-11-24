@@ -5,9 +5,12 @@ public class CameraControl : MonoBehaviour
     [SerializeField] Transform player;
     [SerializeField] float maxVerticalDistance;
 
+    
+
     private void Update()
     {
-        
+
+       
         Vector3 playerPos = player.position;
         float y = transform.position.y;
 
