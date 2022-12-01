@@ -9,6 +9,7 @@ public class HealthObject : MonoBehaviour
 
     [SerializeField] Color maxHealthColor;
     [SerializeField] Color zeroHealthColor;
+    [SerializeField] GameObject objectToTurnOnWhenDie;
 
     int currentHealth;
 
@@ -30,6 +31,7 @@ public class HealthObject : MonoBehaviour
     {
         currentHealth = 0;
         UpdateTex();
+        TestDeath();
     }
 
     public bool IsDead()
@@ -42,5 +44,14 @@ public class HealthObject : MonoBehaviour
         currentHealth -= damage;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
         UpdateTex();
+        TestDeath();
+    }
+
+    void TestDeath()
+    {
+        if(IsDead())
+        {
+            objectToTurnOnWhenDie?.SetActive(true); //"?." ha nem null akkor mûküdjön
+        }
     }
 }
