@@ -49,8 +49,26 @@ public class Player2D : MonoBehaviour
         }
         //movement
         float inputX = Input.GetAxis("Horizontal");
-        //Debug.Log(inputX);
 
+        if (inputX>0)
+        {
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+
+        }
+        else if (inputX<0)
+        {
+            transform.rotation = Quaternion.Euler(0, 180, 0);
+        }
+
+
+
+        //Debug.Log(inputX);
+        /*if(inputX !=0)
+        {
+            float direction = Mathf.Sign(inputX);
+            Vector3 scale = transform.localScale;
+            transform.localScale = new Vector3(direction*Mathf.Abs(scale.x), scale.y,scale.z);
+        }*/
 
         Vector2 velocity = new Vector2(inputX * horizontalSpeed, rigidbody.velocity.y);
         rigidbody.velocity = velocity;

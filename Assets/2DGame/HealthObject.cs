@@ -13,9 +13,31 @@ public class HealthObject : MonoBehaviour
 
     int currentHealth;
 
+    const string healthKey = "health"; //konstans érték
+
+    private void Awake()
+    {
+        if(PlayerPrefs.HasKey(healthKey)) // rákérdezünk, hogy létezik e a health
+        {
+            currentHealth = PlayerPrefs.GetInt(healthKey);
+        }
+
+    }
+    private void OnDestroy()
+    {
+        PlayerPrefs.SetInt(healthKey, currentHealth); // health kulcsszó alá elmentem a currenthealth-t
+    }
+
     private void Start()
     {
-        currentHealth = maxHealth;
+        if (PlayerPrefs.HasKey(healthKey)) // rákérdezünk, hogy létezik e a health
+        {
+            currentHealth = PlayerPrefs.GetInt(healthKey);
+        }
+        if (currentHealth <= 0)
+        {
+            currentHealth = maxHealth;
+        }
 
         UpdateTex();
     }

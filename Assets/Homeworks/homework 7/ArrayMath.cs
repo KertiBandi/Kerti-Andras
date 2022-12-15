@@ -21,13 +21,13 @@ public class ArrayMath : MonoBehaviour
 
         mean = sum / arrayMaths.Length;
 
-        arrayMathInvers = new float[arrayMaths.Length];
+       /* arrayMathInvers = new float[arrayMaths.Length];
 
         for (int i = arrayMaths.Length-1; i >=0; i--)
         {
             arrayMathInvers[i] = arrayMaths[i];
         }
-
+       */
 
 
 
