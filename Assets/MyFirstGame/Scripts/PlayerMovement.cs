@@ -4,6 +4,15 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] float speed;
     [SerializeField] float angularSpeed;
+    [SerializeField] Animator anim;
+
+    private void OnValidate()
+    {
+        if(anim == null)
+        {
+            anim = GetComponent<Animator>();
+        }
+    }
 
     void Update()
     {
@@ -11,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
         bool isLeftPressed = Input.GetKey(KeyCode.LeftArrow);
         bool isUpPressed = Input.GetKey(KeyCode.UpArrow);
         bool isDownPressed = Input.GetKey(KeyCode.DownArrow);
+
 
         float x = 0;
         if(isRightPressed)
@@ -33,7 +43,8 @@ public class PlayerMovement : MonoBehaviour
 
         Vector3 velocity = direction * speed;
 
-
+        bool isMoving = velocity != Vector3.zero;
+        anim.SetBool("IsRunning",isMoving);
 
 
 
